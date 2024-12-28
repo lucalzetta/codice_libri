@@ -1,0 +1,16 @@
+ID3@h xTU
+TXXXþÿTerzo campo liberoþÿQuesta è un'aggiunta nel terzo campo libero
+TXXXaþÿLiberoþÿQuesta è un'aggiunta nel campo 'Libero'
+TXXXþÿQuarto campo liberoþÿQuesta è un'aggiunta nel quarto campo libero
+TXXXþÿCampo del 13 dicembreþÿQuesto è il contenuto del campo del 13 dicembre
+COMMQuesto è un commento
+COMM2XXXþÿþÿQuesto è un commento
+TYER2024
+TDRC2024
+TXXXþÿALtro campo liberoþÿQuesta è un'aggiunta nel campo libero supplementare.
+TRCK1
+TCONGenere personale
+TALBMETADATI
+TXXXþÿQuinto campo liberoþÿQuesta è un'aggiunta nel quinto campo libero!!!????'''//
+TIT2"Traccia di esempio per i metadati
+TPE1Luca Alzetta

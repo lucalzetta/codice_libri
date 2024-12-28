@@ -1,0 +1,16 @@
+ID3@h xTU
+Terzo campo libero: |||Questa è un'aggiunta nel terzo campo libero
+ÿLibero: |||Questa è un'aggiunta nel campo 'Libero'
+Quarto campo libero: |||Questa è un'aggiunta nel quarto campo libero
+Campo del 13 dicembre: |||Questo è il contenuto del campo del 13 dicembre
+Commento: |||Questo è un commento
+Commento: |||2XXXþÿþÿQuesto è un commento
+Anno di produzione: |||2024
+Anno di produzione Audacity: |||2024
+ALtro campo libero: |||Questa è un'aggiunta nel campo libero supplementare.
+Numero d'ordine di riproduzione della traccia: |||1
+Tipo di contenuto: |||Genere personale
+Titolo dell'album, del video, dello show: |||METADATI
+Quinto campo libero: |||Questa è un'aggiunta nel quinto campo libero!!!????'''//
+Titolo della traccia: |||"Traccia di esempio per i metadati
+Prima voce, solista: |||Luca Alzetta

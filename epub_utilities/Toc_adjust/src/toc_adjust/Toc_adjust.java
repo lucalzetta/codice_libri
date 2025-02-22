@@ -17,26 +17,23 @@ public class Toc_adjust {
      /**
      * @param args the command line arguments
      */
-    System.out.println("Hello World!\nIl primo argomento passato alla riga di comando è: " + args[0]
-                        + "\nil secondo è: " + args[1] + "\nIl percorso su cui lavoriamo è: " + args[2]);
+    //args = new String[3];
+//il contenuto del primo argomento è controllato dallo script EpubUtils.sh, il terzo è
+//fornito senza intervento dell'utente come percorso di partenza. Va impostato un controllo
+//sul secondo argomento.
+
+    System.out.println("\nIl primo argomento passato alla riga di comando è: " + args[0]
+                        + "\nil secondo è: " + args[1]);
+
     String opz = args[0];
-    String file_name = args[1];
-    String percorso = args[2];
-    String albero;
-    StringBuilder sb;
+    String percorso = args[1];
+    
     variabili var = new variabili();
     var.set_perc(percorso);
-    var.set_file(file_name);
-    var.set_file_file(file_name);
     var.set_perc_file(percorso);
-    File perc_comp = var.get_file_file_complet();
-    InPtSTream is = new InPtSTream(perc_comp);
-    //is.mostraFile();
-    Elabora_stringhe es = new Elabora_stringhe(is.stringFile());
-    sb = es.a_capo();
-    System.out.println(var.get_perc());
-    ListFiles lf = new ListFiles(var.get_perc());
-    System.out.println(sb.toString());
+    var.set_opzione(opz);
+    
+    EvalOpz eo = new EvalOpz(opz, percorso);
     }
 }
     

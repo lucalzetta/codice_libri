@@ -4,11 +4,12 @@ import java.io.File;
 
 public class variabili
 {
-private String PERCORSO;
-private String FILE;
-private File FILE_FILE;
-private File PERCORSO_FILE;
-private File FILE_COMPLETO_FP;
+private  static String PERCORSO;
+private static String FILE;
+private static File FILE_FILE;
+private static File PERCORSO_FILE;
+private static File FILE_COMPLETO_FP;
+private static String OPZ;
 
 public variabili()
 {
@@ -41,6 +42,14 @@ this.FILE_COMPLETO_FP = new File(this.PERCORSO, this.FILE);
 return FILE_COMPLETO_FP;
 }
 
+public String Get_opzione()
+{
+return OPZ;
+}
+
+/*************FINE DELLE IMPOSTAZIONI DELLE VARIABILI*****************/
+
+/*************INIZIO DELLA LETTURA DELLE VARIABILI*****************/
 public void set_perc(String percorso)
 {
 PERCORSO = percorso;
@@ -59,6 +68,11 @@ FILE = nome_file;
 public void set_file_file (String nome_file)
 {
 FILE_FILE= new File(nome_file);
+}
+
+public void set_opzione(String opz)
+{
+OPZ = opz;
 }
 
 }

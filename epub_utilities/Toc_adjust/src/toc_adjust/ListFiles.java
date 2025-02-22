@@ -22,12 +22,13 @@ private final String DIR;
 private static File[] LF;
 private static List<File> LSF;
 private static int GCONTER;
-/**/
+
 
 public ListFiles(String direct)
 {
 DIR = direct;
 LSF = new ArrayList();
+System.out.println("Invocazione del loopper() con l'argomento: " + DIR);
 loopper(DIR);
 stampa();
 }
@@ -40,22 +41,24 @@ int x = 0;
 File dir = new File(dire);
 LF = new File[(dir.listFiles()).length];
 LF = dir.listFiles();
-int entrate = LF.length;
-System.out.println("Classe ListFiles, metodo loopper, lunghezza dell'array LF[]: " + entrate);
 
+//aggiungiamo la directory di partenza.
+linea = new File(DIR);
+LSF.add(linea);
 //aggiungiamo tutti gli elementi della directory di partenza.
 while (x < LF.length)
     {
         linea = (LF[x]);
         if(!LSF.contains(linea))
             {
-                for(int r = 0; r < 80; r++)
+/*                for(int r = 0; r < 80; r++)
                     {
                         System.out.printf("A");
                     }
-                System.out.printf("%nDal metodo loopper, aggiunta all'arrayList di :%n%s%n", linea.toString());
+                System.out.printf("%nDal metodo loopper, aggiunta all'arrayList di :%n%s%n", linea.toString());*/
                 LSF.add(linea);
                 lista = lista + linea.toString() + "\n";
+                //SE L'Elemento è una directory passiamo il controllo a lf()
                 if(linea.isDirectory())
                     {
                         lf(linea.toString());
@@ -64,78 +67,69 @@ while (x < LF.length)
         x++;
         GCONTER++;
     }
-
-/*x = 0;
-//poi cerchiamo le directory e le passiamo a lf()
-while (x < LF.length)
-    {
-        linea = (LF[x]);
-        if(linea.isDirectory())
-            {
-                System.out.printf("%nDal metodo loopper, chiamata di lf(), valore dell'argomento : %s%n", linea.toString());
-                lf(linea.toString());
-            }
-    }*/
 }
 
-private String lf(String dire)
+private void lf(String dire)
 {
-String lista = "";
 File linea = new File(dire);
 File[] linea_a = new File[linea.listFiles().length];
 linea_a = linea.listFiles();
+String old_dir;
 int x = 0;
 
 while (x < linea_a.length)
     {
         linea = (linea_a[x]);
-        lista = lista + linea.toString() + "\n";
         if(!LSF.contains(linea))
             {
-            for(int r = 0; r < 80; r++)
+/*            for(int r = 0; r < 80; r++)
                     {
                         System.out.printf("B");
                     }
 
-                System.out.printf("%nDal metodo lf, aggiunta all'ArrayList di :%n%s%n", linea.toString());
+                System.out.printf("%nDal metodo lf, aggiunta all'ArrayList di :%n%s%n", linea.toString());*/
                 LSF.add(linea);
             if(linea.isDirectory())
                 {
-                    System.out.printf("%nDal metodo lf, chiamata di loopper(), valore dell'argomento : %s%n", linea.toString());
                     loopper(linea.toString());
                 }
             }
         x++;
         GCONTER++;
     }
+//a questo punto bisogna ridiscendere il ramo già ispezionato e riprendere il controllo
+//sui rami non ancora percorsi
+old_dir = linea.getParent();
+linea = new File(old_dir);
 
-System.out.printf("%nDal metodo lf, chiamata di loopper() ALLA fine del ciclo, valore dell'argomento : %s%n", dire);
-loopper(DIR);
+old_dir = linea.getParent();
 
-//System.out.printf("Dal metodo lf:%n%s", lista);
-return lista;
+if(old_dir.contains(DIR))
+    {
+       loopper(old_dir);
+    }
 }
 
 private void stampa()
 {
 Iterator i = LSF.iterator();
-String ris;
 int w = 0;
-
-System.out.printf("Fine della classe, stampa di prova per la "
-        + "lettura del risultato dell'elaborazione.%n");
-for(int r = 0; r < 80; r++)
-    {
-        System.out.printf("C");
-    }
 
 System.out.printf("%nTotale cicli svolti: %d%n", GCONTER);
 
 while(i.hasNext())
 {
-System.out.printf("%nRiga %d%n%s", w,i.next());
+    if(i.hasNext())
+        {
+            System.out.printf("%nRiga %d%n%s", w, i.next());
+        }
 w++;
 }
-
 }
+
+public List<File> get_tree_dir()
+{
+return LSF;
+}
+
 }

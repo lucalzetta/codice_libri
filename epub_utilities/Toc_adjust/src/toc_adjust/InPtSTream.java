@@ -14,26 +14,25 @@ public class InPtSTream
 *********************************************************/
 private final InputStream in;
 private int[] dati;
-private final String nomeFile;
-private variabili var;
+private static String nomeFile;
 
 public InPtSTream(String nomeFileCompleto)throws IOException
 {
-    this.nomeFile = nomeFileCompleto;
+    nomeFile = nomeFileCompleto;
     in = new FileInputStream(nomeFile);
-    int ln = this.getLength();
-    System.out.println("Il file " + nomeFile + " è lungo: " + ln + " byte.");
+    getLength();
+    mostraFile();
 }
 
 public InPtSTream(File nomeFileCompleto)throws IOException
 {
-    this.nomeFile = nomeFileCompleto.toString();
+    nomeFile = nomeFileCompleto.toString();
     in = new FileInputStream(nomeFile);
-    int ln = this.getLength();
-    System.out.println("Il file " + nomeFile + " è lungo: " + ln + " byte.");
+    getLength();
+    mostraFile();
 }
 
-public int getLength()
+private void getLength()
 {
 int lunghezzaFile = 0;
 boolean b = true;
@@ -47,25 +46,21 @@ try
             lunghezzaFile = lunghezzaFile +1;
         }
     dati = new int[lunghezzaFile];
+    System.out.println("Il file " + nomeFile + " è lungo: " + lunghezzaFile + " byte.");
     }
 catch(IOException ioe)
     {
         System.out.printf("Eccezione nella lettura ddel file: %s", ioe);
     }
-return lunghezzaFile;
 }
 
-public void mostraFile()
+private void mostraFile()
 {
-/*******************************************************************************
-*Questo metodo mostra tutti i caratteri del fileInputStream associati al loro  *
-*codice numerico. Va a capo in corrispondenza di un carattere di ritorno a capo*
-*******************************************************************************/
 InputStream nf = null;
     
 try
 {
-nf = new FileInputStream(this.nomeFile);    
+nf = new FileInputStream(nomeFile);    
     for (int i = 0; i < dati.length; i++) 
         {
             int datum = nf.read();
@@ -74,20 +69,13 @@ nf = new FileInputStream(this.nomeFile);
         }
     for (int i = 0; i < dati.length; i++) 
         {
-            if(dati[i] == 10) 
-                {
-                    System.out.printf("\n");
-                }
-            else
-                {
-                    char cara = (char)dati[i];
-                    System.out.printf("%s", cara);
-                }
+            char cara = (char)dati[i];
+            System.out.printf("%s", cara);
         }
 }
 catch(IOException ioe)
 {
-        System.out.printf("Eccezione nella lettura del file nel metodo mostraFile: %s", ioe);
+        System.err.printf("Eccezione nella lettura del file nel metodo mostraFile: %s", ioe);
 }
 finally
 {
@@ -116,7 +104,7 @@ InputStream nf = null;
     
 try
 {
-nf = new FileInputStream(this.nomeFile);    
+nf = new FileInputStream(nomeFile);    
     for (int i = 0; i < dati.length; i++) 
         {
             int datum = nf.read();

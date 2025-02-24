@@ -128,7 +128,7 @@ while(conter < ORIGINE.length())
 {
     c = ORIGINE.charAt(conter);
     //System.out.println("La variabile conter vale: " + conter + " il carattere in questa posizione è: " + c);
-    if((c == '<'))
+    if((c == '<') & (conter > 1))
         {
             dest = dest + "\n";
             del = del + 1;
@@ -141,5 +141,82 @@ ESITO = new StringBuilder(dest);
 System.out.println("Sono state riscontrate : " + (del + 1) + " occorrenze del carattere '<'.");
 System.out.println("La stringa finale è lunga: " + ESITO.length() + " byte.");
 return ESITO;
+}
+
+public void numera_toc(String origine)
+{
+    /**
+     *Questo metodo rigenera la numerazione degli elementi della toc.*/
+
+String dest = "";
+int conter = 0;
+int posizione = 0;
+int lunghezza_numero = 0;
+Integer nuovo_numero = 0;
+String nav = "navPoint-";
+String ord = "playOrder=\"";
+String numero_d_ordine = "";
+Integer ig;
+String result = "";
+char numero;
+char c;
+
+System.out.println("La stringa origine è lunga: " + ORIGINE.length() + " byte.");
+//char[] test_char = new char[] {'t', 'e', 's', 't', 't', 't'};
+while((conter < origine.length()) & (conter != -1))
+    {
+        nuovo_numero += 1;
+        conter = origine.indexOf(nav, conter);
+        result = result + origine.substring(posizione, conter);
+        posizione = conter;
+        
+        conter = conter + 9;
+        
+        result = result + origine.substring(posizione, conter);
+        posizione = conter;
+        
+        numero = origine.charAt(conter);
+        while (((int)numero > 47) & ((int)numero < 58))
+            {
+                numero_d_ordine = numero_d_ordine + (char)numero;
+                System.out.println("Trovato una cifra " + numero + " in posizione : " + conter + lunghezza_numero);
+                lunghezza_numero += 1;
+                numero = origine.charAt(conter + lunghezza_numero);                
+            }
+        
+        conter = conter + lunghezza_numero;    
+        posizione = posizione + lunghezza_numero;
+        
+        if (numero_d_ordine != "")
+            {
+                ig = Integer.parseInt(numero_d_ordine);
+                System.out.println("Composizione della successione delle cifre: " + ig.toString());
+            }
+        
+        result = result + nuovo_numero.toString();
+        
+        if (conter != -1)
+            {
+                conter = origine.indexOf(ord, conter);
+                
+                result = result + origine.substring(posizione, conter);
+                posizione = conter;
+                
+                conter = conter + 11;
+
+                result = result + origine.substring(posizione, conter);
+                posizione = conter + lunghezza_numero;
+                
+                result = result + nuovo_numero.toString();                
+                
+                System.out.println("Trovata un'occorrenza di: " + ord + " in posizione : " + conter);
+                //impostiamo un blocco per un loop infinito
+                if ((origine.indexOf(nav, conter)) == -1 ) conter = -1;
+            }
+        numero_d_ordine = "";
+        lunghezza_numero = 0;
+    }
+result = result + origine.substring(posizione, origine.length());
+System.out.println(result);
 }
 }

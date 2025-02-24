@@ -42,7 +42,7 @@ this.FILE_COMPLETO_FP = new File(this.PERCORSO, this.FILE);
 return FILE_COMPLETO_FP;
 }
 
-public String Get_opzione()
+public String get_opzione()
 {
 return OPZ;
 }

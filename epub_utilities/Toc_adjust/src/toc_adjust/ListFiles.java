@@ -30,7 +30,7 @@ DIR = direct;
 LSF = new ArrayList();
 System.out.println("Invocazione del loopper() con l'argomento: " + DIR);
 loopper(DIR);
-stampa();
+//stampa();
 }
 
 private void loopper(String dire)
@@ -115,7 +115,7 @@ private void stampa()
 Iterator i = LSF.iterator();
 int w = 0;
 
-System.out.printf("%nTotale cicli svolti: %d%n", GCONTER);
+//System.out.printf("%nTotale cicli svolti: %d%n", GCONTER);
 
 while(i.hasNext())
 {

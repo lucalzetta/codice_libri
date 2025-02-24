@@ -5,10 +5,10 @@
 package toc_adjust;
 
 import java.io.IOException;
-import java.io.File;
+
 /**
  *
- * @author ubuntu
+ * @author Luca Alzetta
  */
 public class Toc_adjust {
 
@@ -17,10 +17,6 @@ public class Toc_adjust {
      /**
      * @param args the command line arguments
      */
-    //args = new String[3];
-//il contenuto del primo argomento è controllato dallo script EpubUtils.sh, il terzo è
-//fornito senza intervento dell'utente come percorso di partenza. Va impostato un controllo
-//sul secondo argomento.
 
     System.out.println("\nIl primo argomento passato alla riga di comando è: " + args[0]
                         + "\nil secondo è: " + args[1]);

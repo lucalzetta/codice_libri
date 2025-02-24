@@ -57,9 +57,18 @@ while (accolta == false)
                     accolta = true;
                     break;
             case "-t":
-                    System.out.println("Cercheremo di modificare la numerazione dei capitoli"
+                    System.out.println("Cercheremo di modificare la numerazione dei capitoli "
                             + "presenti nella toc!");
                     vr.set_opzione(OPZ);
+                    dir = vr.get_perc();
+                    System.out.println("Invocazione di ListFiles() con l'argomento: " + dir);
+                    ListFiles tf = new ListFiles(dir);
+                    LF = new ArrayList();
+                    LF = tf.get_tree_dir();
+                    sx = new scegliXML(LF, "ncx");//crea una lista di tutti i file con estensione .ncx contenuti nella directory
+                    //e nelle subdirectory (un solo file presunto.)
+                    PF = new passa_file(sx.get_xml());
+                    
                     accolta = true;
                     break;
             case "-g":
@@ -70,20 +79,9 @@ while (accolta == false)
                     ListFiles lf = new ListFiles(dir);
                     LF = new ArrayList();
                     LF = lf.get_tree_dir();
-                    sx = new scegliXML(LF);
-                    sx.stampa();
-                    /*RIGHE DI TEST per la scrittura su file
-                    //String test_path = "/home/ubuntu/GDrive/Luca/LibriERiviste/ImmanuelKant/Critica_della_ragion_pura/InLavorazione/ODT/settings.xml";
-                    //String test_path = "/home/luca/GDrive/Luca/LibriERiviste/ImmanuelKant/Critica_della_ragion_pura/InLavorazione/ODT/settings.xml";
-                    String test_path = "/home/luca/GDrive/Luca/LibriERiviste/ImmanuelKant/Critica_della_ragion_pura/InLavorazione/ODT/content.xml";
-                    IN = new InPtSTream(test_path);
-                    SB = IN.stringFile();
-                    ES = new Elabora_stringhe(SB);
-                    SB = ES.a_capo();
-                    SB = ES.a_capo_III(SB);
-                    SB = ES.a_capo_II(SB);
-                    PF = new passa_file(test_path, SB);
-                    /*FINE RIGHE DI TEST per la scrittura su file*/
+                    sx = new scegliXML(LF, "xml");//crea una lista di tutti i file con estensione .xml contenuti nella directory
+                    //e nelle subdirectory.
+                    //sx.stampa();
                     PF = new passa_file(sx.get_xml());
                     accolta = true;
                     break;

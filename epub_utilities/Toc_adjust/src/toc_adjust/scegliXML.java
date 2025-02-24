@@ -16,15 +16,17 @@ public class scegliXML
 private static List LF;
 private static List NEW_LF;
 private static int CONTATORE;
+private final String SUFFISSO;
 
-public scegliXML(List lst_files)
+public scegliXML(List lst_files, String suffisso)
 {
 LF = lst_files;
+SUFFISSO = "." + suffisso;
 NEW_LF = new ArrayList<>();
-scarta();
+scarta(SUFFISSO);
 }
 
-private void scarta()
+private void scarta(String suffix)
 {
 Iterator i = LF.iterator();
 String nf;
@@ -32,7 +34,7 @@ String nf;
 while(i.hasNext())
 {
     nf = i.next().toString();
-    if(nf.endsWith(".xml"))
+    if(nf.endsWith(suffix))
         {
             NEW_LF.add(nf);
         }

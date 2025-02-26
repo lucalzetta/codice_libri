@@ -68,7 +68,6 @@ while (accolta == false)
                     sx = new scegliXML(LF, "ncx");//crea una lista di tutti i file con estensione .ncx contenuti nella directory
                     //e nelle subdirectory (un solo file presunto.)
                     PF = new passa_file(sx.get_xml());
-                    
                     accolta = true;
                     break;
             case "-g":
@@ -81,7 +80,7 @@ while (accolta == false)
                     LF = lf.get_tree_dir();
                     sx = new scegliXML(LF, "xml");//crea una lista di tutti i file con estensione .xml contenuti nella directory
                     //e nelle subdirectory.
-                    //sx.stampa();
+                    sx.stampa();
                     PF = new passa_file(sx.get_xml());
                     accolta = true;
                     break;

@@ -56,8 +56,12 @@ while (it.hasNext())
 nome_old_file = it.next().toString();
 switch (opz)
     {
-    case "-n":
-        opz_xml(nome_old_file);
+    case "-g":
+        while (it.hasNext())
+            {
+                nome_old_file = it.next().toString();
+                opz_xml(nome_old_file);
+            }
         break;
     case "-t":
         opz_toc(nome_old_file);
@@ -94,7 +98,7 @@ OutPtStream os;
 IN = new InPtSTream(nome_file);
 SB = IN.stringFile();
 ES = new Elabora_stringhe(SB);
-ES.numera_toc(SB.toString());
-//os = new OutPtStream(nome_file, SB);
+SB = ES.numera_toc(SB);
+os = new OutPtStream(nome_file, SB);
 }
 }
